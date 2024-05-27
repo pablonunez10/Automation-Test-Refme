@@ -26,10 +26,10 @@ describe('Tests Home/Organization Refme', () => {
       // // cy.get('input[aria-label="Licencia"]').click();
       // // cy.contains('div.q-item-label', 'Licencia A').click();
       cy.get('input[aria-label="Nombre"]').type('Test');
-      cy.get('input[aria-label="Apellido"]').type('Automation');
-      cy.get('input[aria-label="Mail"]').type('Automation@Automation.com');
+      cy.get('input[aria-label="Apellido"]').type('cypress');
+      cy.get('input[aria-label="Mail"]').type('nunezbenitezpablo+1@gmail.com');
       cy.get('button[type="submit"]').click();
-      cy.visit('https://refme.dlab.software/#/organizations/8/');
+      cy.visit('http://localhost:9000/#/organizations/');
     })
   })
 })

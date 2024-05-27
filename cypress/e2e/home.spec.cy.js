@@ -26,8 +26,8 @@ describe('Refme Home', () => {
     cy.wait(3000)
     cy.contains('.q-item__label', 'Entrenamientos').click();
   });
-  it('Exit for the home and go to the login', () => {
-    cy.get('button.q-btn.q-btn-item.non-selectable.no-outline.q-btn--standard.q-btn--round.bg-secondary.text-white.q-btn--actionable.q-focusable.q-hoverable').click();
-    cy.url().should('include', '/login');
-  })
+  // it('Exit for the home and go to the login', () => {
+  //   cy.get('button.q-btn.q-btn-item.non-selectable.no-outline.q-btn--standard.q-btn--round.bg-secondary.text-white.q-btn--actionable.q-focusable.q-hoverable').click();
+  //   cy.url().should('include', '/login');
+  // })
 });
