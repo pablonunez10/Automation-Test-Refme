@@ -26,4 +26,9 @@ describe('Tests Groups', () => {
     /* ==== End Cypress Studio ==== */
     cy.get('.q-dialog__inner .q-table tr input').first().click({force: true});
   })
+  it('Delete group', () => {
+    cy.get('button.q-btn.q-btn-item.non-selectable.no-outline.q-btn--flat.q-btn--rectangle.text-secondary.q-btn--actionable.q-focusable.q-hoverable.q-btn--dense').click();
+    cy.contains('Eliminar').click();
+    cy.get('button.q-btn.q-btn-item.non-selectable.no-outline.q-btn--unelevated.q-btn--rectangle.q-btn--rounded.bg-negative.text-white.q-btn--actionable.q-focusable.q-hoverable.q-btn--no-uppercase').contains('Confirmar').click();
+  })
 })
