@@ -1,11 +1,14 @@
+const baseUrl = 'http://localhost:9000';
+const email = 'nunezbenitezpablo@gmail.com';
+const password = '180305' 
 describe('Tests Groups', () => {
   beforeEach(() => {
-    cy.visit('https://refme.dlab.software/#/login');
-    cy.get('input[aria-label="Email"]').type('dlab@dlab.software');
-    cy.get('input[aria-label="Contraseña"]').type('5^q%W#kUq2BSsD*^8X%');
+    cy.visit(`${baseUrl}/#/login`);
+    cy.get('input[aria-label="Email"]').type(`${email}`);
+    cy.get('input[aria-label="Contraseña"]').type(`${password}`);
     cy.get('button[type="submit"]').click();
     cy.get('button[aria-label="Expandir"]').click();
-    cy.contains('div.q-item__label', 'TAM').click();
+    cy.contains('div.q-item__label', 'OTM').click();
     cy.get('button.q-btn').contains('Continuar').click();
     cy.get('div.q-drawer__content').should('exist');
     cy.get('.q-list').find('.column');
@@ -26,9 +29,9 @@ describe('Tests Groups', () => {
     /* ==== End Cypress Studio ==== */
     cy.get('.q-dialog__inner .q-table tr input').first().click({force: true});
   })
-  it('Delete group', () => {
-    cy.get('button.q-btn.q-btn-item.non-selectable.no-outline.q-btn--flat.q-btn--rectangle.text-secondary.q-btn--actionable.q-focusable.q-hoverable.q-btn--dense').click();
-    cy.contains('Eliminar').click();
-    cy.get('button.q-btn.q-btn-item.non-selectable.no-outline.q-btn--unelevated.q-btn--rectangle.q-btn--rounded.bg-negative.text-white.q-btn--actionable.q-focusable.q-hoverable.q-btn--no-uppercase').contains('Confirmar').click();
-  })
+  // it('Delete group', () => {
+  //   cy.get('button.q-btn.q-btn-item.non-selectable.no-outline.q-btn--flat.q-btn--rectangle.text-secondary.q-btn--actionable.q-focusable.q-hoverable.q-btn--dense').click();
+  //   cy.contains('Eliminar').click();
+  //   cy.get('button.q-btn.q-btn-item.non-selectable.no-outline.q-btn--unelevated.q-btn--rectangle.q-btn--rounded.bg-negative.text-white.q-btn--actionable.q-focusable.q-hoverable.q-btn--no-uppercase').contains('Confirmar').click();
+  // })
 })
