@@ -1,0 +1,21 @@
+{
+  "name": "cypress-e2e-refme",
+  "version": "1.0.0",
+  "description": "E2E Testing Refme",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "cy:open": "cypress open"
+  },
+  "keywords": [
+    "e2e",
+    "automation",
+    "framework",
+    "refme"
+  ],
+  "author": "manu",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.10.0"
+  }
+}
