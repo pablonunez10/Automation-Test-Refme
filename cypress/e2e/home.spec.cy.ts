@@ -1,4 +1,4 @@
-import { FRONTEND_URL, LOGIN_MAIL, LOGIN_PASS } from "../helpers";
+import { FRONTEND_URL, LOGIN_MAIL, LOGIN_PASS, TEST_GROUP_NAME } from "../helpers";
 
 describe('Refme Home', () => {
   beforeEach(() => {
@@ -7,7 +7,7 @@ describe('Refme Home', () => {
     cy.get('input[aria-label="Contraseña"]').type(`${LOGIN_PASS}`);
     cy.get('button[type="submit"]').click();
     cy.get('button[aria-label="Expandir"]').click();
-    cy.contains('div.q-item__label', 'OTM').click();
+    cy.contains('div.q-item__label', `${TEST_GROUP_NAME}`).click();
     cy.get('button.q-btn').contains('Continuar').click();
   });
   it('Buttons of Refme Home', () => {

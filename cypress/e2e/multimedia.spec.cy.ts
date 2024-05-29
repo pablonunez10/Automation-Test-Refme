@@ -1,7 +1,4 @@
-import { FRONTEND_URL, LOGIN_MAIL, LOGIN_PASS, TEST_GROUP_NAME, URL_VIDEO} from "../helpers";
-const CARGAR_ENTRENAMIENTO = ['oficiales', 'personales']
-const TOPICO = ['Manos', 'Disputas', 'Faltas Tacticas']
-const DECISION_TECNICA = ['No Falta','Tiro Libre Indirecto' ]
+import { FRONTEND_URL, LOGIN_MAIL, LOGIN_PASS, TEST_GROUP_NAME, URL_VIDEO, tests} from "../helpers";
 describe('Multimedia Oficiales-Manos', () => {
     beforeEach(() => {
         cy.visit(`${FRONTEND_URL}/#/login`);
@@ -12,133 +9,25 @@ describe('Multimedia Oficiales-Manos', () => {
         cy.contains('div.q-item__label', `${TEST_GROUP_NAME}`).click();
         cy.get('button.q-btn').contains('Continuar').click();
         cy.contains('strong', 'Multimedia').click();
-        cy.url().should('include', '/multimedia')
-        cy.get('.q-btn.q-btn-item.q-btn--standard.bg-primary').click()
-        cy.get('input[aria-label="Cargar en entrenamientos *"]').click()
+        cy.url().should('include', '/multimedia');
+        cy.get('.q-btn.q-btn-item.q-btn--standard.bg-primary').click();
+        cy.get('input[aria-label="Cargar en entrenamientos *"]').click();
         cy.get('.q-menu .q-item').contains('Oficiales').click();
-        cy.get('input[aria-label="Tópico"]').click()
+        cy.get('input[aria-label="Tópico"]').click();
         cy.get('.q-menu .q-item').contains('Manos').click();
     });
-    it('Add videos No falta-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos No falta-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
 
-    });
-    it('Add videos Tiro No falta-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
+    tests.forEach((test) => {
+        it(`Add videos ${test.tecnica}-${test.disciplinaria}`, () => {
+            cy.get('input[aria-label="Decisión técnica"]').click();
+            cy.get('.q-menu .q-item').contains(test.tecnica).click();
+            cy.get('input[aria-label="Decisión disciplinaria"]').click();
+            cy.get('.q-menu .q-item').contains(test.disciplinaria).click();
+            cy.get('button[data-v-0dc4b3a4]').click();
+            cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
+            cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, { force: true });
+            cy.get('button[type="submit"]').click();
+        });
     });
 });
 describe('Multimedia Oficiales-Disputas', () => {
@@ -151,133 +40,24 @@ describe('Multimedia Oficiales-Disputas', () => {
         cy.contains('div.q-item__label', `${TEST_GROUP_NAME}`).click();
         cy.get('button.q-btn').contains('Continuar').click();
         cy.contains('strong', 'Multimedia').click();
-        cy.url().should('include', '/multimedia')
-        cy.get('.q-btn.q-btn-item.q-btn--standard.bg-primary').click()
-        cy.get('input[aria-label="Cargar en entrenamientos *"]').click()
+        cy.url().should('include', '/multimedia');
+        cy.get('.q-btn.q-btn-item.q-btn--standard.bg-primary').click();
+        cy.get('input[aria-label="Cargar en entrenamientos *"]').click();
         cy.get('.q-menu .q-item').contains('Oficiales').click();
-        cy.get('input[aria-label="Tópico"]').click()
+        cy.get('input[aria-label="Tópico"]').click();
         cy.get('.q-menu .q-item').contains('Disputas').click();
     });
-    it('Add videos No falta-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos No falta-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-
-    });
-    it('Add videos Tiro No falta-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
+    tests.forEach((test) => {
+        it(`Add videos ${test.tecnica}-${test.disciplinaria}`, () => {
+            cy.get('input[aria-label="Decisión técnica"]').click();
+            cy.get('.q-menu .q-item').contains(test.tecnica).click();
+            cy.get('input[aria-label="Decisión disciplinaria"]').click();
+            cy.get('.q-menu .q-item').contains(test.disciplinaria).click();
+            cy.get('button[data-v-0dc4b3a4]').click();
+            cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
+            cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, { force: true });
+            cy.get('button[type="submit"]').click();
+        });
     });
 });
 describe('Multimedia Oficiales-Faltas tácticas', () => {
@@ -297,126 +77,17 @@ describe('Multimedia Oficiales-Faltas tácticas', () => {
         cy.get('input[aria-label="Tópico"]').click()
         cy.get('.q-menu .q-item').contains('Faltas tácticas').click();
     });
-    it('Add videos No falta-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos No falta-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-
-    });
-    it('Add videos Tiro No falta-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
+    tests.forEach((test) => {
+        it(`Add videos ${test.tecnica}-${test.disciplinaria}`, () => {
+            cy.get('input[aria-label="Decisión técnica"]').click();
+            cy.get('.q-menu .q-item').contains(test.tecnica).click();
+            cy.get('input[aria-label="Decisión disciplinaria"]').click();
+            cy.get('.q-menu .q-item').contains(test.disciplinaria).click();
+            cy.get('button[data-v-0dc4b3a4]').click();
+            cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
+            cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, { force: true });
+            cy.get('button[type="submit"]').click();
+        });
     });
 });
 describe('Multimedia Personales-Manos', () => {
@@ -436,126 +107,17 @@ describe('Multimedia Personales-Manos', () => {
         cy.get('input[aria-label="Tópico"]').click()
         cy.get('.q-menu .q-item').contains('Manos').click();
     });
-    it('Add videos No falta-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos No falta-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-
-    });
-    it('Add videos Tiro No falta-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
+    tests.forEach((test) => {
+        it(`Add videos ${test.tecnica}-${test.disciplinaria}`, () => {
+            cy.get('input[aria-label="Decisión técnica"]').click();
+            cy.get('.q-menu .q-item').contains(test.tecnica).click();
+            cy.get('input[aria-label="Decisión disciplinaria"]').click();
+            cy.get('.q-menu .q-item').contains(test.disciplinaria).click();
+            cy.get('button[data-v-0dc4b3a4]').click();
+            cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
+            cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, { force: true });
+            cy.get('button[type="submit"]').click();
+        });
     });
 });
 describe('Multimedia Personales-Disputas', () => {
@@ -575,126 +137,17 @@ describe('Multimedia Personales-Disputas', () => {
         cy.get('input[aria-label="Tópico"]').click()
         cy.get('.q-menu .q-item').contains('Disputas').click();
     });
-    it('Add videos No falta-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos No falta-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-
-    });
-    it('Add videos Tiro No falta-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
+    tests.forEach((test) => {
+        it(`Add videos ${test.tecnica}-${test.disciplinaria}`, () => {
+            cy.get('input[aria-label="Decisión técnica"]').click();
+            cy.get('.q-menu .q-item').contains(test.tecnica).click();
+            cy.get('input[aria-label="Decisión disciplinaria"]').click();
+            cy.get('.q-menu .q-item').contains(test.disciplinaria).click();
+            cy.get('button[data-v-0dc4b3a4]').click();
+            cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
+            cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, { force: true });
+            cy.get('button[type="submit"]').click();
+        });
     });
 });
 describe('Multimedia Personales-Faltas tácticas', () => {
@@ -714,125 +167,16 @@ describe('Multimedia Personales-Faltas tácticas', () => {
         cy.get('input[aria-label="Tópico"]').click()
         cy.get('.q-menu .q-item').contains('Faltas tácticas').click();
     });
-    it('Add videos No falta-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos No falta-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-
-    });
-    it('Add videos Tiro No falta-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('No falta').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre indirecto-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre indirecto').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro libre directo-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro libre directo').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Sin tarjeta', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Sin tarjeta').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Tarjeta Amarilla', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta Amarilla').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
-    });
-    it('Add videos Tiro penal-Tarjeta roja', () => {
-        cy.get('input[aria-label="Decisión técnica"]').click()
-        cy.get('.q-menu .q-item').contains('Tiro penal').click();
-        cy.get('input[aria-label="Decisión disciplinaria"]').click()
-        cy.get('.q-menu .q-item').contains('Tarjeta roja').click();
-        cy.get('button[data-v-0dc4b3a4]').click();
-        cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
-        cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, {force: true})
-        cy.get('button[type="submit"]').click();
+    tests.forEach((test) => {
+        it(`Add videos ${test.tecnica}-${test.disciplinaria}`, () => {
+            cy.get('input[aria-label="Decisión técnica"]').click();
+            cy.get('.q-menu .q-item').contains(test.tecnica).click();
+            cy.get('input[aria-label="Decisión disciplinaria"]').click();
+            cy.get('.q-menu .q-item').contains(test.disciplinaria).click();
+            cy.get('button[data-v-0dc4b3a4]').click();
+            cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
+            cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, { force: true });
+            cy.get('button[type="submit"]').click();
+        });
     });
 });

@@ -1,4 +1,4 @@
-import { FRONTEND_URL, LOGIN_MAIL, LOGIN_PASS, TEST_GROUP_NAME } from "../helpers";
+import { FRONTEND_URL, LOGIN_MAIL, LOGIN_PASS, TEST_GROUP_NAME, URL_VIDEO} from "../helpers";
 
 describe('Home/E-Learning Refme', () => {
     beforeEach(() => {
@@ -15,4 +15,4 @@ describe('Home/E-Learning Refme', () => {
     it('Add videos to refme', () => {
         
     });
-  });
+});
