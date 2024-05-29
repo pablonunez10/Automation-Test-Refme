@@ -1,5 +1,5 @@
 import { FRONTEND_URL, LOGIN_MAIL, LOGIN_PASS, TEST_GROUP_NAME, URL_VIDEO, tests} from "../helpers";
-describe('Multimedia Oficiales-Manos', () => {
+describe('Test de subida de videos oficiales - Topico:Manos', () => {
     beforeEach(() => {
         cy.visit(`${FRONTEND_URL}/#/login`);
         cy.get('input[aria-label="Email"]').type(`${LOGIN_MAIL}`);
@@ -27,10 +27,12 @@ describe('Multimedia Oficiales-Manos', () => {
             cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
             cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, { force: true });
             cy.get('button[type="submit"]').click();
+            cy.get('div.q-notification__message.col').contains('El video se creo correctamente');
+            cy.get('.q-tabs.bg-white > .q-tabs__content > .q-tab--inactive > .q-tab__content > .text-wrap').click();
         });
     });
 });
-describe('Multimedia Oficiales-Disputas', () => {
+describe('Test de subida de videos oficiales - Topico:Disputas', () => {
     beforeEach(() => {
         cy.visit(`${FRONTEND_URL}/#/login`);
         cy.get('input[aria-label="Email"]').type(`${LOGIN_MAIL}`);
@@ -57,10 +59,12 @@ describe('Multimedia Oficiales-Disputas', () => {
             cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
             cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, { force: true });
             cy.get('button[type="submit"]').click();
+            cy.get('div.q-notification__message.col').contains('El video se creo correctamente');
+            cy.get('.q-tabs.bg-white > .q-tabs__content > .q-tab--inactive > .q-tab__content > .text-wrap').click();
         });
     });
 });
-describe('Multimedia Oficiales-Faltas tácticas', () => {
+describe('Test de subida de videos oficiales - Topico:Faltas tácticas', () => {
     beforeEach(() => {
         cy.visit(`${FRONTEND_URL}/#/login`);
         cy.get('input[aria-label="Email"]').type(`${LOGIN_MAIL}`);
@@ -87,10 +91,12 @@ describe('Multimedia Oficiales-Faltas tácticas', () => {
             cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
             cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, { force: true });
             cy.get('button[type="submit"]').click();
+            cy.get('div.q-notification__message.col').contains('El video se creo correctamente');
+            cy.get('.q-tabs.bg-white > .q-tabs__content > .q-tab--inactive > .q-tab__content > .text-wrap').click();
         });
     });
 });
-describe('Multimedia Personales-Manos', () => {
+describe('Test de subida de videos personales - Topico: manos', () => {
     beforeEach(() => {
         cy.visit(`${FRONTEND_URL}/#/login`);
         cy.get('input[aria-label="Email"]').type(`${LOGIN_MAIL}`);
@@ -117,10 +123,12 @@ describe('Multimedia Personales-Manos', () => {
             cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
             cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, { force: true });
             cy.get('button[type="submit"]').click();
+            cy.get('div.q-notification__message.col').contains('El video se creo correctamente');
+            cy.get('.q-tabs.bg-white > .q-tabs__content > .q-tab--inactive > .q-tab__content > .text-wrap').click();
         });
     });
 });
-describe('Multimedia Personales-Disputas', () => {
+describe('Test de subida de videos personales - Topico: Disputas', () => {
     beforeEach(() => {
         cy.visit(`${FRONTEND_URL}/#/login`);
         cy.get('input[aria-label="Email"]').type(`${LOGIN_MAIL}`);
@@ -147,10 +155,12 @@ describe('Multimedia Personales-Disputas', () => {
             cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
             cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, { force: true });
             cy.get('button[type="submit"]').click();
+            cy.get('div.q-notification__message.col').contains('El video se creo correctamente');
+            cy.get('.q-tabs.bg-white > .q-tabs__content > .q-tab--inactive > .q-tab__content > .text-wrap').click();
         });
     });
 });
-describe('Multimedia Personales-Faltas tácticas', () => {
+describe('Test de subida de videos personales - Topico: Faltas tacticas', () => {
     beforeEach(() => {
         cy.visit(`${FRONTEND_URL}/#/login`);
         cy.get('input[aria-label="Email"]').type(`${LOGIN_MAIL}`);
@@ -177,6 +187,8 @@ describe('Multimedia Personales-Faltas tácticas', () => {
             cy.get('.q-gutter-y-sm > .q-btn > .q-btn__content > .block').click();
             cy.get('input[type="file"]').selectFile(`${URL_VIDEO}`, { force: true });
             cy.get('button[type="submit"]').click();
+            cy.get('div.q-notification__message.col').contains('El video se creo correctamente');
+            cy.get('.q-tabs.bg-white > .q-tabs__content > .q-tab--inactive > .q-tab__content > .text-wrap').click();
         });
     });
 });
